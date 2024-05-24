@@ -3,23 +3,42 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class DoubleCircularLIst<T>
+public class DoubleNode<T>
 {
-    private Node Head = null;
-    private Node Last = null;
-    private int Count = 0;
-    public class Node
+    public T Data { get; set; }
+    public DoubleNode<T> Next { get; set; }
+    public DoubleNode<T> Previous { get; set; }
+
+    public DoubleNode(T data)
     {
-        public T Value { get; set; }
-        public Node Next { get; set; }
-        public Node Previous { get; set; }
-
-        public Node(T value)
-        {
-            Value = value;
-            Next = null;
-            Previous = null;
-        }
-
+        Data = data;
+        Next = this; 
+        Previous = this;
     }
 }
+
+public class CircularDoublyLinkedList<T>
+{
+    private DoubleNode<T> head;
+
+    public void Add(T data)
+    {
+        DoubleNode<T> newNode = new DoubleNode<T>(data);
+
+        if (head == null)
+        {
+            head = newNode;
+        }
+        else
+        {
+            DoubleNode<T> tail = head.Previous;
+
+            tail.Next = newNode;
+            newNode.Previous = tail;
+            newNode.Next = head;
+            head.Previous = newNode;
+        }
+    }
+    public DoubleNode<T> Head => head;
+}
+

@@ -36,7 +36,7 @@ public class SongManager : MonoBehaviour
     }
     public void GetDataFromMidi()
     {
-        ICollection<Melanchall.DryWetMidi.Interaction.Note> notes = songMidiFile.GetNotes();
+        var notes = songMidiFile.GetNotes();
         Melanchall.DryWetMidi.Interaction.Note[] array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
         notes.CopyTo(array, 0);
 

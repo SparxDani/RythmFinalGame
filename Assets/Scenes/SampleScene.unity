@@ -1974,7 +1974,7 @@ MonoBehaviour:
   audioSource: {fileID: 154749329}
   songDelayInSeconds: 0
   inputDelayMiliseconds: 0
-  marginOfError: 0.1
+  marginOfError: 0.15
   lanes:
   - {fileID: 895237447}
   - {fileID: 1491760025}
@@ -1983,7 +1983,7 @@ MonoBehaviour:
   fileLocation: PlanetWisp.mid
   noteTime: 1
   noteSpawnY: 13
-  noteTapY: -10
+  noteTapY: -11.5
 --- !u!4 &1070386412
 Transform:
   m_ObjectHideFlags: 0

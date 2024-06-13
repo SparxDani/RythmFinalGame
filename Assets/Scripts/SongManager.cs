@@ -18,6 +18,7 @@ public class SongManager : MonoBehaviour
     public float noteTime;
     public float noteSpawnY;
     public float noteTapY;
+    [SerializeField] int noteIndex;
     public float noteDespawnY { get { return noteTapY - (noteSpawnY - noteTapY); } }
 
     public static MidiFile songMidiFile;
@@ -43,6 +44,7 @@ public class SongManager : MonoBehaviour
         for (int i = 0; i < lanes.Length; i++)
         {
             lanes[i].SetTimeStamps(array);
+            noteIndex++;
         }
 
         Invoke(nameof(StartSong), songDelayInSeconds);

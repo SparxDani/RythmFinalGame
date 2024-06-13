@@ -13,7 +13,9 @@ public class Lane : MonoBehaviour
     public List<double> timeStamps = new List<double>();
 
     int spawnIndex = 0;
-    int inputIndex = 0;
+    public int inputIndex = 0;
+    public static int totalTimeStamps;
+
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
         for (int i = 0; i < array.Length; i++)
@@ -23,8 +25,10 @@ public class Lane : MonoBehaviour
             {
                 MetricTimeSpan metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.songMidiFile.GetTempoMap());
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
+                totalTimeStamps++;
             }
         }
+        ScoreManager.UpdateTotalNotes();
     }
 
     void Update()
@@ -57,7 +61,8 @@ public class Lane : MonoBehaviour
                 }
                 else
                 {
-                    print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
+                    double accuracy = 100 - (Math.Abs(audioTime - timeStamp) / marginOfError * 10);
+                    print($"Hit inaccurate on {inputIndex} note with {accuracy:F2}% accurate");
                 }
             }
             if (timeStamp + marginOfError <= audioTime)
@@ -67,12 +72,13 @@ public class Lane : MonoBehaviour
                 inputIndex++;
             }
         }
-
     }
+
     private void Hit()
     {
         ScoreManager.Hit();
     }
+
     private void Miss()
     {
         ScoreManager.Miss();

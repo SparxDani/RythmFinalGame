@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81ad5481a2a8b4469bbbc3507366901, type: 3}
   m_Name: "Nueva Canci\xF3n 2"
   m_EditorClassIdentifier: 
-  title: Act2
+  musicTitle: Planet Wisp
+  musicArtist: 
+  dificult: 
+  musicDuration: 
+  musicImage: {fileID: 0}
   audioClip: {fileID: 0}

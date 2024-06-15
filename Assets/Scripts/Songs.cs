@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Songs : MonoBehaviour
 {
-    public string Title { get; private set; }
+    /*public string Title { get; private set; }
 
     public Songs(string title)
     {
         Title = title;
-    }
+    }*/
 }

@@ -12,11 +12,14 @@ public class CircularMenuTMP : MonoBehaviour
     private CircularDoublyLinkedList<TextMeshProUGUI> menuItemsList = new CircularDoublyLinkedList<TextMeshProUGUI>();
     public int centerIndex = 3;
     public float spacing = 30f;
+    public float horizontalPos = -170f;
     public Color blinkColor1 = Color.gray;
     public Color blinkColor2 = Color.white;
     public float blinkInterval = 0.5f;
 
     private Coroutine blinkCoroutine;
+
+    public SongDetailsDisplay songDetailsDisplay;
 
     void Start()
     {
@@ -79,6 +82,7 @@ public class CircularMenuTMP : MonoBehaviour
                 if (i == centerIndex)
                 {
                     blinkCoroutine = StartCoroutine(Blink(menuItemsList.Get(i)));
+                    songDetailsDisplay.UpdateSongDetails(songsList.Get(i));
                 }
                 else
                 {
@@ -87,7 +91,7 @@ public class CircularMenuTMP : MonoBehaviour
             }
 
             RectTransform rectTransform = menuItemsList.Get(i).GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(0, (centerIndex - i) * spacing);
+            rectTransform.anchoredPosition = new Vector2(horizontalPos, (centerIndex - i) * spacing);
         }
     }
 

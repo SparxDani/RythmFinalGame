@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "Nueva Canci\xF3n 4"
   m_EditorClassIdentifier: 
   musicTitle: Tough Guy Alert
-  musicArtist: 
-  dificult: 
-  musicDuration: 
-  musicImage: {fileID: 0}
+  musicArtist: Nintendo
+  dificult: Hard
+  musicDuration: 1:40 min
+  musicImage: {fileID: 21300000, guid: 03602123890f57043a17da0d00a74a67, type: 3}
   audioClip: {fileID: 0}

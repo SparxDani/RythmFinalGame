@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "Nueva Canci\xF3n 2"
   m_EditorClassIdentifier: 
   musicTitle: Planet Wisp
-  musicArtist: 
-  dificult: 
-  musicDuration: 
-  musicImage: {fileID: 0}
+  musicArtist: Sega
+  dificult: Medium
+  musicDuration: 2:52 min
+  musicImage: {fileID: 21300000, guid: e549c2da3fdc516459c81eae5e44cdcf, type: 3}
   audioClip: {fileID: 0}

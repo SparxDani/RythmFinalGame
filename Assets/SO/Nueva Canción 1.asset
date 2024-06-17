@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "Nueva Canci\xF3n 1"
   m_EditorClassIdentifier: 
   musicTitle: 'Pop Stars '
-  musicArtist: 
-  dificult: 
-  musicDuration: 
-  musicImage: {fileID: 0}
+  musicArtist: KDA
+  dificult: Hard
+  musicDuration: 3:05 min
+  musicImage: {fileID: 21300000, guid: 30d92919f43ed4d41a40dbe9758bca2a, type: 3}
   audioClip: {fileID: 0}

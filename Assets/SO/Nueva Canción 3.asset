@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "Nueva Canci\xF3n 3"
   m_EditorClassIdentifier: 
   musicTitle: Moonstruck Blossom
-  musicArtist: 
-  dificult: 
-  musicDuration: 
-  musicImage: {fileID: 0}
+  musicArtist: Nintendo
+  dificult: Hard
+  musicDuration: 3:35 min
+  musicImage: {fileID: 21300000, guid: bab7489803c6b3e4fa7e08f64f400b1c, type: 3}
   audioClip: {fileID: 0}

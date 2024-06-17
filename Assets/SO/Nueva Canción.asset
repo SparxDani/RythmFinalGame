@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "Nueva Canci\xF3n"
   m_EditorClassIdentifier: 
   musicTitle: Angel Island
-  musicArtist: 
-  dificult: 
-  musicDuration: 
-  musicImage: {fileID: 0}
+  musicArtist: Sega
+  dificult: Hard
+  musicDuration: 2:30 min
+  musicImage: {fileID: 21300000, guid: 3740049931f46d542a38481c5b9aef2f, type: 3}
   audioClip: {fileID: 0}

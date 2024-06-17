@@ -9,7 +9,7 @@ public class Lane : MonoBehaviour
     public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
     public KeyCode input;
     public GameObject notePrefab;
-    List<Note> notes = new List<Note>();
+    Queue<Note> notes = new Queue<Note>();
     public List<double> timeStamps = new List<double>();
 
     int spawnIndex = 0;
@@ -37,9 +37,10 @@ public class Lane : MonoBehaviour
         {
             if (SongManager.GetAudioSourceTime() >= timeStamps[spawnIndex] - SongManager.Instance.noteTime)
             {
-                GameObject note = Instantiate(notePrefab, transform);
-                notes.Add(note.GetComponent<Note>());
-                note.GetComponent<Note>().assignedTime = (float)timeStamps[spawnIndex];
+                GameObject noteObj = Instantiate(notePrefab, transform);
+                Note noteComponent = noteObj.GetComponent<Note>();
+                noteComponent.assignedTime = (float)timeStamps[spawnIndex];
+                notes.Enqueue(noteComponent);
                 spawnIndex++;
             }
         }
@@ -56,7 +57,7 @@ public class Lane : MonoBehaviour
                 {
                     Hit();
                     print($"Hit on {inputIndex} note");
-                    Destroy(notes[inputIndex].gameObject);
+                    Destroy(notes.Dequeue().gameObject);
                     inputIndex++;
                 }
                 else
@@ -69,6 +70,7 @@ public class Lane : MonoBehaviour
             {
                 Miss();
                 print($"Missed {inputIndex} note");
+                notes.Dequeue(); 
                 inputIndex++;
             }
         }

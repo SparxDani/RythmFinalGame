@@ -35,11 +35,11 @@ public class SongManager : MonoBehaviour
         songMidiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation);
         GetDataFromMidi();
     }
+
     public void GetDataFromMidi()
     {
         var notes = songMidiFile.GetNotes();
-        Melanchall.DryWetMidi.Interaction.Note[] array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
-        notes.CopyTo(array, 0);
+        Melanchall.DryWetMidi.Interaction.Note[] array = notes.ToArray();
 
         for (int i = 0; i < lanes.Length; i++)
         {
@@ -47,15 +47,16 @@ public class SongManager : MonoBehaviour
             noteIndex++;
         }
 
-        Invoke(nameof(StartSong), songDelayInSeconds);
+        StartSong();
     }
+
     public void StartSong()
     {
         audioSource.Play();
     }
+
     public static double GetAudioSourceTime()
     {
         return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
     }
-
 }

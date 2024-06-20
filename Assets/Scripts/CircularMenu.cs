@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
-using System;
 
-public class CircularMenuTMP : MonoBehaviour
+public class CircularMenu : MonoBehaviour
 {
     public SongsSO[] songsArray;
     public TextMeshProUGUI menuItemTemplate;
@@ -20,6 +20,8 @@ public class CircularMenuTMP : MonoBehaviour
     private Coroutine blinkCoroutine;
 
     public SongDetailsDisplay songDetailsDisplay;
+
+    private SongsSO selectedSong;
 
     void Start()
     {
@@ -81,6 +83,7 @@ public class CircularMenuTMP : MonoBehaviour
 
                 if (i == centerIndex)
                 {
+                    selectedSong = songsList.Get(i);
                     blinkCoroutine = StartCoroutine(Blink(menuItemsList.Get(i)));
                     songDetailsDisplay.UpdateSongDetails(songsList.Get(i));
                 }
@@ -103,6 +106,15 @@ public class CircularMenuTMP : MonoBehaviour
             menuItem.color = toggle ? blinkColor1 : blinkColor2;
             toggle = !toggle;
             yield return new WaitForSeconds(blinkInterval);
+        }
+    }
+
+    public void PlaySelectedSong()
+    {
+        if (selectedSong != null)
+        {
+            GameData.AudioClip = selectedSong.audioClip;
+            SceneManager.LoadScene("GameMusic");
         }
     }
 }

@@ -10,6 +10,7 @@ public class SongsSO : ScriptableObject
     public string musicArtist;
     public string dificult;
     public string musicDuration;
+    public string midiNameFile;
     public Sprite musicImage;
     public AudioClip audioClip;
 }

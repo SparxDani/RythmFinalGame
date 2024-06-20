@@ -19,6 +19,7 @@ public class DoubleNode<T>
 public class CircularDoublyLinkedList<T>
 {
     private DoubleNode<T> head;
+    private int count = 0;
 
     public void Add(T data)
     {
@@ -37,41 +38,44 @@ public class CircularDoublyLinkedList<T>
             newNode.Next = head;
             head.Previous = newNode;
         }
+        count++;
     }
 
     public void Insert(int index, T data)
     {
-        if (index < 0) return;
+        if (index < 0 || index > count) return;
 
         DoubleNode<T> newNode = new DoubleNode<T>(data);
         if (head == null)
         {
             head = newNode;
-            return;
         }
-
-        DoubleNode<T> current = head;
-        for (int i = 0; i < index; i++)
+        else
         {
-            current = current.Next;
+            DoubleNode<T> current = head;
+            for (int i = 0; i < index; i++)
+            {
+                current = current.Next;
+            }
+
+            DoubleNode<T> previousNode = current.Previous;
+
+            previousNode.Next = newNode;
+            newNode.Previous = previousNode;
+            newNode.Next = current;
+            current.Previous = newNode;
+
+            if (index == 0)
+            {
+                head = newNode;
+            }
         }
-
-        DoubleNode<T> previousNode = current.Previous;
-
-        previousNode.Next = newNode;
-        newNode.Previous = previousNode;
-        newNode.Next = current;
-        current.Previous = newNode;
-
-        if (index == 0)
-        {
-            head = newNode;
-        }
+        count++;
     }
 
     public void RemoveAt(int index)
     {
-        if (head == null || index < 0) return;
+        if (head == null || index < 0 || index >= count) return;
 
         DoubleNode<T> current = head;
 
@@ -83,18 +87,27 @@ public class CircularDoublyLinkedList<T>
         DoubleNode<T> previousNode = current.Previous;
         DoubleNode<T> nextNode = current.Next;
 
+        if (current == head)
+        {
+            if (head.Next == head)
+            {
+                head = null;
+            }
+            else
+            {
+                head = nextNode;
+            }
+        }
+
         previousNode.Next = nextNode;
         nextNode.Previous = previousNode;
 
-        if (index == 0)
-        {
-            head = nextNode;
-        }
+        count--;
     }
 
     public T Get(int index)
     {
-        if (head == null || index < 0) return default(T);
+        if (head == null || index < 0 || index >= count) return default(T);
 
         DoubleNode<T> current = head;
 
@@ -108,22 +121,11 @@ public class CircularDoublyLinkedList<T>
 
     public int Count
     {
-        get
-        {
-            if (head == null) return 0;
-
-            int count = 1;
-            DoubleNode<T> current = head;
-
-            while (current.Next != head)
-            {
-                count++;
-                current = current.Next;
-            }
-
-            return count;
-        }
+        get { return count; }
     }
 
-    public DoubleNode<T> Head => head;
+    public bool IsEmpty
+    {
+        get { return count == 0; }
+    }
 }

@@ -23,17 +23,28 @@ public class SongManager : MonoBehaviour
 
     public static MidiFile songMidiFile;
 
-    // Start is called before the first frame update
     void Start()
     {
+        fileLocation = GameData.MidiFileName;
         Instance = this;
         ReadFromFile();
     }
 
     private void ReadFromFile()
     {
-        songMidiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation);
-        GetDataFromMidi();
+        // Cambia Application.streamingAssetsPath a Application.dataPath y apunta a MidiFiles
+        string path = Application.dataPath + "/MidiFiles/" + fileLocation;
+        Debug.Log("Attempting to read file from path: " + path);
+
+        if (System.IO.File.Exists(path))
+        {
+            songMidiFile = MidiFile.Read(path);
+            GetDataFromMidi();
+        }
+        else
+        {
+            Debug.LogError($"File {fileLocation} not found at path: " + path);
+        }
     }
 
     public void GetDataFromMidi()

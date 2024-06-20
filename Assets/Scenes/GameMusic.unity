@@ -311,8 +311,9 @@ GameObject:
   m_Component:
   - component: {fileID: 154749330}
   - component: {fileID: 154749329}
+  - component: {fileID: 154749331}
   m_Layer: 0
-  m_Name: Planet Wisp (Act 1) - Sonic Colors [OST] [Short]
+  m_Name: AudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -328,7 +329,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2b9c7161b1b6c2e4d8e3a6589f268478, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -429,6 +430,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &154749331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154749328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab0035a35314af40b279d2605164931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 154749329}
 --- !u!1 &206270648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,7 +1014,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1027,7 +1041,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: -10}
+  m_LocalPosition: {x: 0, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1903,8 +1917,8 @@ Transform:
   m_GameObject: {fileID: 1006917167}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.01, z: 0}
-  m_LocalScale: {x: 10.638754, y: 0.12843567, z: 0.8562376}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 10.638754, y: 0.1, z: 0.8562376}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1295488703}
@@ -2061,15 +2075,15 @@ MonoBehaviour:
   audioSource: {fileID: 154749329}
   songDelayInSeconds: 0
   inputDelayMiliseconds: 0
-  marginOfError: 0.15
+  marginOfError: 0.1
   lanes:
   - {fileID: 895237447}
   - {fileID: 1491760025}
   - {fileID: 119267576}
   - {fileID: 1928094416}
-  fileLocation: PlanetWisp1.mid
-  noteTime: 3
-  noteSpawnY: 20
+  fileLocation: 
+  noteTime: 1.25
+  noteSpawnY: 25
   noteTapY: 0
   noteIndex: 0
 --- !u!4 &1070386412
@@ -2580,7 +2594,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1295488702}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.46174863, y: 0, z: 0, w: 0.8870109}
   m_LocalPosition: {x: 0, y: 0, z: -1.3}
   m_LocalScale: {x: 1.1679, y: 1.1679, z: 1.1679}
   m_ConstrainProportionsScale: 0
@@ -2592,7 +2606,7 @@ Transform:
   - {fileID: 1303314785}
   - {fileID: 1006917168}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 55, y: 0, z: 0}
 --- !u!1 &1303314783
 GameObject:
   m_ObjectHideFlags: 0
@@ -2672,7 +2686,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10.638754, y: 0.12843567, z: 0.8562376}
+  m_LocalScale: {x: 10.638754, y: 0.1, z: 0.8562376}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1295488703}

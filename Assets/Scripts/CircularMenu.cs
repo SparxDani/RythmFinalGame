@@ -114,6 +114,7 @@ public class CircularMenu : MonoBehaviour
         if (selectedSong != null)
         {
             GameData.AudioClip = selectedSong.audioClip;
+            GameData.MidiFileName = selectedSong.midiNameFile;
             SceneManager.LoadScene("GameMusic");
         }
     }

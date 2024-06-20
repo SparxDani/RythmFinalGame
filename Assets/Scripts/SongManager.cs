@@ -25,14 +25,13 @@ public class SongManager : MonoBehaviour
 
     void Start()
     {
-        fileLocation = GameData.MidiFileName;
         Instance = this;
+        fileLocation = GameData.MidiFileName;
         ReadFromFile();
     }
 
     private void ReadFromFile()
     {
-        // Cambia Application.streamingAssetsPath a Application.dataPath y apunta a MidiFiles
         string path = Application.dataPath + "/MidiFiles/" + fileLocation;
         Debug.Log("Attempting to read file from path: " + path);
 

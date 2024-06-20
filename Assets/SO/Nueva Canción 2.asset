@@ -16,6 +16,6 @@ MonoBehaviour:
   musicArtist: Sega
   dificult: Medium
   musicDuration: 2:52 min
-  midiNameFile: PlanetWisp1
+  midiNameFile: PlanetWisp1.mid
   musicImage: {fileID: 21300000, guid: e549c2da3fdc516459c81eae5e44cdcf, type: 3}
   audioClip: {fileID: 8300000, guid: 2b9c7161b1b6c2e4d8e3a6589f268478, type: 3}

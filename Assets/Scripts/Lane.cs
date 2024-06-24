@@ -16,8 +16,14 @@ public class Lane : MonoBehaviour
     public int inputIndex = 0;
     public static int totalTimeStamps;
 
+    public static void ResetTotalTimeStamps()
+    {
+        totalTimeStamps = 0;
+    }
+
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
+        timeStamps.Clear();  
         for (int i = 0; i < array.Length; i++)
         {
             Melanchall.DryWetMidi.Interaction.Note note = array[i];
@@ -55,7 +61,9 @@ public class Lane : MonoBehaviour
             {
                 if (Math.Abs(audioTime - timeStamp) < marginOfError)
                 {
+                    string feedbackMessage = GetFeedbackMessage(Math.Abs(audioTime - timeStamp), marginOfError);
                     Hit();
+                    FeedbackManager.Instance.ShowFeedback(feedbackMessage, ScoreManager.ComboScore);
                     print($"Hit on {inputIndex} note");
                     Note noteToDestroy = notes.Dequeue();
                     if (noteToDestroy != null)
@@ -66,6 +74,7 @@ public class Lane : MonoBehaviour
                 }
                 else
                 {
+                    FeedbackManager.Instance.ShowFeedback("Miss", ScoreManager.ComboScore);
                     double accuracy = 100 - (Math.Abs(audioTime - timeStamp) / marginOfError * 10);
                     print($"Hit inaccurate on {inputIndex} note with {accuracy:F2}% accurate");
                 }
@@ -73,6 +82,7 @@ public class Lane : MonoBehaviour
             if (timeStamp + marginOfError <= audioTime)
             {
                 Miss();
+                FeedbackManager.Instance.ShowFeedback("Miss", ScoreManager.ComboScore);
                 print($"Missed {inputIndex} note");
                 Note noteToDestroy = notes.Dequeue();
                 if (noteToDestroy != null)
@@ -81,6 +91,26 @@ public class Lane : MonoBehaviour
                 }
                 inputIndex++;
             }
+        }
+    }
+
+    private string GetFeedbackMessage(double difference, double marginOfError)
+    {
+        if (difference < marginOfError / 4)
+        {
+            return "Excellent";
+        }
+        else if (difference < marginOfError / 2)
+        {
+            return "Great";
+        }
+        else if (difference < (3 * marginOfError) / 4)
+        {
+            return "Good";
+        }
+        else
+        {
+            return "Ok";
         }
     }
 

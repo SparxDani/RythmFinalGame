@@ -8,24 +8,31 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
     public AudioSource[] hitSFX;
     public AudioSource[] missSFX;
-    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI TotalScore;
     public TextMeshProUGUI noteCounterText;
 
-    static int comboScore;
-
+    private static int comboScore;
     private static int totalNotes;
+    private static int totalScore;
+
+    public static int ComboScore
+    {
+        get { return comboScore; }
+        private set { comboScore = value; }
+    }
 
     void Start()
     {
         Instance = this;
         comboScore = 0;
+        Lane.ResetTotalTimeStamps();
         UpdateTotalNotes();
     }
 
     public static void Hit()
     {
         comboScore += 1;
-        totalNotes--;
+        totalNotes --;
         UpdateNoteCounter();
         PlayRandomSound(Instance.hitSFX);
     }
@@ -33,7 +40,7 @@ public class ScoreManager : MonoBehaviour
     public static void Miss()
     {
         comboScore = 0;
-        totalNotes--;
+        totalNotes --;
         UpdateNoteCounter();
         PlayRandomSound(Instance.missSFX);
     }
@@ -44,10 +51,7 @@ public class ScoreManager : MonoBehaviour
         UpdateNoteCounter();
     }
 
-    private void Update()
-    {
-        scoreText.text = "Combo Score: " + comboScore.ToString();
-    }
+    
 
     private static void UpdateNoteCounter()
     {

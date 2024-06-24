@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
@@ -19,6 +20,7 @@ public class SongManager : MonoBehaviour
     public float noteSpawnY;
     public float noteTapY;
     [SerializeField] int noteIndex;
+
     public float noteDespawnY { get { return noteTapY - (noteSpawnY - noteTapY); } }
 
     public static MidiFile songMidiFile;
@@ -28,15 +30,23 @@ public class SongManager : MonoBehaviour
         Instance = this;
         fileLocation = GameData.MidiFileName;
         ReadFromFile();
+
     }
 
     private void ReadFromFile()
     {
-        string path = Application.dataPath + "/MidiFiles/" + fileLocation;
-        Debug.Log("Attempting to read file from path: " + path);
+        songMidiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation);
 
-        if (System.IO.File.Exists(path))
+        //songMidiFile = MidiFile.Read(path);
+        GetDataFromMidi();
+    }
+        //string path = Application.dataPath + "/MidiFiles/" + fileLocation;
+        //Debug.Log("Attempting to read file from path: " + path);
+
+        /*if (System.IO.File.Exists(path))
         {
+            songMidiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation);
+
             songMidiFile = MidiFile.Read(path);
             GetDataFromMidi();
         }
@@ -44,7 +54,7 @@ public class SongManager : MonoBehaviour
         {
             Debug.LogError($"File {fileLocation} not found at path: " + path);
         }
-    }
+    }*/
 
     public void GetDataFromMidi()
     {

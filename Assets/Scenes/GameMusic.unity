@@ -1389,7 +1389,7 @@ MonoBehaviour:
   - {fileID: 518735699}
   - {fileID: 1645654134}
   - {fileID: 1963453807}
-  TotalScore: {fileID: 0}
+  totalScoreText: {fileID: 870703307}
   noteCounterText: {fileID: 1367571635}
 --- !u!4 &594834757
 Transform:
@@ -1720,7 +1720,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1919,7 +1919,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2423,16 +2423,16 @@ MonoBehaviour:
   audioSource: {fileID: 154749329}
   songDelayInSeconds: 0
   inputDelayMiliseconds: 0
-  marginOfError: 0.14
+  marginOfError: 0.1
   lanes:
   - {fileID: 895237447}
   - {fileID: 1491760025}
   - {fileID: 119267576}
   - {fileID: 1928094416}
-  fileLocation: 
+  fileLocation: PVZbpm105.mid
   noteTime: 1.25
   noteSpawnY: 0
-  noteTapY: -33
+  noteTapY: -35
   noteIndex: 0
 --- !u!4 &1070386412
 Transform:
@@ -3097,7 +3097,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3767,7 +3767,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

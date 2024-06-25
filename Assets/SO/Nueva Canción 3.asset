@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81ad5481a2a8b4469bbbc3507366901, type: 3}
   m_Name: "Nueva Canci\xF3n 3"
   m_EditorClassIdentifier: 
-  musicTitle: Moonstruck Blossom
-  musicArtist: Nintendo
-  dificult: Hard
-  musicDuration: 3:35 min
-  musicImage: {fileID: 21300000, guid: bab7489803c6b3e4fa7e08f64f400b1c, type: 3}
-  audioClip: {fileID: 0}
+  musicTitle: Zombies on Your Lawn
+  musicArtist: Laura Shigihara
+  dificult: Easy
+  musicDuration: 2:40 min
+  midiNameFile: PVZbpm105.mid
+  musicImage: {fileID: 21300000, guid: cc6b22bc0351db44dbf4472078ed050b, type: 3}
+  audioClip: {fileID: 8300000, guid: 4d62ee8dab5c21b48990f97716e4958d, type: 3}

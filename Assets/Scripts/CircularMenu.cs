@@ -8,6 +8,7 @@ public class CircularMenu : MonoBehaviour
 {
     public SongsSO[] songsArray;
     public TextMeshProUGUI menuItemTemplate;
+    public TMP_InputField inputField;
     private CircularDoublyLinkedList<SongsSO> songsList = new CircularDoublyLinkedList<SongsSO>();
     private CircularDoublyLinkedList<TextMeshProUGUI> menuItemsList = new CircularDoublyLinkedList<TextMeshProUGUI>();
     public int centerIndex = 3;
@@ -115,6 +116,8 @@ public class CircularMenu : MonoBehaviour
         {
             GameData.AudioClip = selectedSong.audioClip;
             GameData.MidiFileName = selectedSong.midiNameFile;
+            GameData.songName = selectedSong.musicTitle;
+            GameData.Username = inputField.text;
             SceneManager.LoadScene("GameMusic");
         }
     }

@@ -23,7 +23,7 @@ public class Lane : MonoBehaviour
 
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
-        timeStamps.Clear();  
+        timeStamps.Clear();
         for (int i = 0; i < array.Length; i++)
         {
             Melanchall.DryWetMidi.Interaction.Note note = array[i];
@@ -62,7 +62,8 @@ public class Lane : MonoBehaviour
                 if (Math.Abs(audioTime - timeStamp) < marginOfError)
                 {
                     string feedbackMessage = GetFeedbackMessage(Math.Abs(audioTime - timeStamp), marginOfError);
-                    Hit();
+                    int precisionBonus = GetPrecisionBonus(feedbackMessage);
+                    ScoreManager.Hit(50, precisionBonus);
                     FeedbackManager.Instance.ShowFeedback(feedbackMessage, ScoreManager.ComboScore);
                     print($"Hit on {inputIndex} note");
                     Note noteToDestroy = notes.Dequeue();
@@ -114,9 +115,21 @@ public class Lane : MonoBehaviour
         }
     }
 
-    private void Hit()
+    private int GetPrecisionBonus(string feedbackMessage)
     {
-        ScoreManager.Hit();
+        switch (feedbackMessage)
+        {
+            case "Excellent":
+                return 50;
+            case "Great":
+                return 30;
+            case "Good":
+                return 15;
+            case "Ok":
+                return 5;
+            default:
+                return 0;
+        }
     }
 
     private void Miss()

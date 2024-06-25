@@ -8,6 +8,7 @@ public class SongsSO : ScriptableObject
 {
     public string musicTitle;
     public string musicArtist;
+    public string musicGame;
     public string dificult;
     public string musicDuration;
     public string midiNameFile;

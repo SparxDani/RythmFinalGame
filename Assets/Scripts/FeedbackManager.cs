@@ -7,7 +7,7 @@ public class FeedbackManager : MonoBehaviour
 {
     public static FeedbackManager Instance;
     public TextMeshProUGUI feedbackText;
-    public float displayDuration = 0.75f;
+    public float displayDuration = 1f;
 
     private Coroutine feedbackCoroutine;
 
@@ -32,7 +32,7 @@ public class FeedbackManager : MonoBehaviour
 
     private IEnumerator HideFeedback()
     {
-        yield return new WaitForSeconds(displayDuration);
+        yield return new WaitForSeconds(1f);
         feedbackText.enabled = false;
     }
 }

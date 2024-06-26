@@ -58,7 +58,7 @@ public class ScoreManager : MonoBehaviour
     public static void Miss()
     {
         comboScore = 0;
-        totalScore -= 25;
+        totalScore -= 75;
         totalNotes--;
         missedNotes++;
         UpdateNoteCounter();

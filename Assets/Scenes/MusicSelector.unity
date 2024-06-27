@@ -1703,7 +1703,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3f1c348944ed42f4680f2bd9f3029d54, type: 2}
   - {fileID: 11400000, guid: d5563a219f2104c478c7e75da28c72fd, type: 2}
   menuItemTemplate: {fileID: 1277823292}
-  inputField: {fileID: 0}
+  inputField: {fileID: 1612029749}
   centerIndex: 2
   spacing: 120
   horizontalPos: -190

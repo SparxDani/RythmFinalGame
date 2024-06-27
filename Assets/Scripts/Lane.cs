@@ -62,8 +62,7 @@ public class Lane : MonoBehaviour
                 if (Math.Abs(audioTime - timeStamp) < marginOfError)
                 {
                     string feedbackMessage = GetFeedbackMessage(Math.Abs(audioTime - timeStamp), marginOfError);
-                    int precisionBonus = GetPrecisionBonus(feedbackMessage);
-                    ScoreManager.Hit(50, precisionBonus);
+                    ScoreManager.Hit(50, feedbackMessage);
                     FeedbackManager.Instance.ShowFeedback(feedbackMessage, ScoreManager.ComboScore);
                     print($"Hit on {inputIndex} note");
                     Note noteToDestroy = notes.Dequeue();
@@ -112,23 +111,6 @@ public class Lane : MonoBehaviour
         else
         {
             return "Ok";
-        }
-    }
-
-    private int GetPrecisionBonus(string feedbackMessage)
-    {
-        switch (feedbackMessage)
-        {
-            case "Excellent":
-                return 50;
-            case "Great":
-                return 30;
-            case "Good":
-                return 15;
-            case "Ok":
-                return 5;
-            default:
-                return 0;
         }
     }
 

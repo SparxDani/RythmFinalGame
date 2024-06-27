@@ -117,7 +117,7 @@ public class CircularMenu : MonoBehaviour
             GameData.AudioClip = selectedSong.audioClip;
             GameData.MidiFileName = selectedSong.midiNameFile;
             GameData.songName = selectedSong.musicTitle;
-            //GameData.Username = inputField.text;
+            GameData.Username = inputField.text;
             SceneManager.LoadScene("GameMusic");
         }
     }

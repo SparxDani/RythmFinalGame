@@ -83,12 +83,14 @@ public class ScoreManager : MonoBehaviour
 
     private static void UpdateNoteCounter()
     {
-        Instance.noteCounterText.text = "Remaining Notes: " + totalNotes.ToString();
+        Instance.noteCounterText.text = $"Left Notes \n{totalNotes.ToString()}";
+
     }
 
     private static void UpdateTotalScore()
     {
-        Instance.totalScoreText.text = "Total Score: " + totalScore.ToString();
+        Instance.totalScoreText.text = $"Total Score \n{totalNotes.ToString()}";
+
     }
 
     private static void PlayRandomSound(AudioSource[] audioSources)

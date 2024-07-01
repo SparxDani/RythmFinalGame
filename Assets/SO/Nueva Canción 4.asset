@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicTitle: Tough Guy Alert
   musicArtist: Nintendo
+  musicGame: 
   dificult: Hard
   musicDuration: 1:40 min
+  musicDurationInSeconds: 100
   midiNameFile: PlanetWisp1.mid
   musicImage: {fileID: 21300000, guid: 03602123890f57043a17da0d00a74a67, type: 3}
   audioClip: {fileID: 0}
+  top5Scores: 0000000000000000000000000000000000000000

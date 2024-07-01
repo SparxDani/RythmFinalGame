@@ -17,7 +17,10 @@ public class CustomQueue<T>
     public T Dequeue()
     {
         if (count == 0)
+        {
             throw new InvalidOperationException("The queue is empty.");
+
+        }
 
         T value = elements.Get(0);
         elements.RemoveAt(0);
@@ -28,7 +31,9 @@ public class CustomQueue<T>
     public T Peek()
     {
         if (count == 0)
+        {
             throw new InvalidOperationException("The queue is empty.");
+        }
 
         return elements.Get(0);
     }

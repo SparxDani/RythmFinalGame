@@ -119,6 +119,20 @@ public class CircularDoublyLinkedList<T>
         return current.Data;
     }
 
+    public void Set(int index, T data)
+    {
+        if (head == null || index < 0 || index >= count) return;
+
+        DoubleNode<T> current = head;
+
+        for (int i = 0; i < index; i++)
+        {
+            current = current.Next;
+        }
+
+        current.Data = data;
+    }
+
     public int Count
     {
         get { return count; }

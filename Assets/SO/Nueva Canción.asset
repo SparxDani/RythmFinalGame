@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicTitle: Angel Island
   musicArtist: Sega
+  musicGame: 
   dificult: Hard
   musicDuration: 2:30 min
+  musicDurationInSeconds: 150
+  midiNameFile: 
   musicImage: {fileID: 21300000, guid: 3740049931f46d542a38481c5b9aef2f, type: 3}
   audioClip: {fileID: 0}
+  top5Scores: 0000000000000000000000000000000000000000

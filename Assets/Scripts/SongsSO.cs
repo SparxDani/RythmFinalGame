@@ -11,7 +11,10 @@ public class SongsSO : ScriptableObject
     public string musicGame;
     public string dificult;
     public string musicDuration;
+    public int musicDurationInSeconds;
     public string midiNameFile;
     public Sprite musicImage;
     public AudioClip audioClip;
+    public int[] top5Scores;
+
 }

@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicTitle: 'Pop Stars '
   musicArtist: KDA
-  musicGame: 
+  musicGame: From League Of Legends
   dificult: Hard
   musicDuration: 3:05 min
+  musicDurationInSeconds: 185
   midiNameFile: PopstarMidiFINAL2.mid
   musicImage: {fileID: 21300000, guid: 30d92919f43ed4d41a40dbe9758bca2a, type: 3}
   audioClip: {fileID: 8300000, guid: 536a5647ee110c2478eebade6295f7a5, type: 3}
+  top5Scores: f1e00000f1e00000f1e00000f1e00000f1e00000

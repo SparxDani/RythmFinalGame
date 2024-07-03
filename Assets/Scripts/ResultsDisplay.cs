@@ -18,6 +18,7 @@ public class ResultsDisplay : MonoBehaviour
     public TextMeshProUGUI[] excellentNotesText;
     public TextMeshProUGUI[] maxComboText;
     public TextMeshProUGUI finalScoreText;
+    public string sceneName;
 
     private CustomPriorityQueue priorityQueue;
 
@@ -73,6 +74,6 @@ public class ResultsDisplay : MonoBehaviour
         {
             GameData.currentSongData.top5Scores = GameData.topScores;
         }
-        SceneManager.LoadScene("MainScene");
+        SceneTransitionController.Instance.FadeToScene(sceneName);
     }
 }

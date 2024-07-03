@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -83,14 +82,12 @@ public class ScoreManager : MonoBehaviour
 
     private static void UpdateNoteCounter()
     {
-        Instance.noteCounterText.text = $"Left Notes \n{totalNotes.ToString()}";
-
+        Instance.noteCounterText.text = totalNotes.ToString();
     }
 
     private static void UpdateTotalScore()
     {
-        Instance.totalScoreText.text = $"Total Score \n{totalNotes.ToString()}";
-
+        Instance.totalScoreText.text = totalScore.ToString();
     }
 
     private static void PlayRandomSound(AudioSource[] audioSources)
@@ -110,6 +107,7 @@ public class ScoreManager : MonoBehaviour
             Instance.StartCoroutine(EndGame());
         }
     }
+
     private static void CountFeedback(string feedbackMessage)
     {
         switch (feedbackMessage)
@@ -128,20 +126,20 @@ public class ScoreManager : MonoBehaviour
                 break;
         }
     }
+
     private static IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
 
         GameData.ComboScore = comboScore;
         GameData.TotalScore = totalScore;
         GameData.MissedNotes = missedNotes;
         GameData.HitedNotes = hitedNotes;
-        GameData.NextScene = "ResultsScreen";
         GameData.OkNotes = okNotes;
         GameData.GoodNotes = goodNotes;
         GameData.GreatNotes = greatNotes;
         GameData.ExcellentNotes = excellentNotes;
 
-        SceneManager.LoadScene(GameData.NextScene);
+        SceneTransitionController.Instance.FadeToScene("ResultsScreen");
     }
 }

@@ -7,9 +7,9 @@ using TMPro;
 public class CircularMenu : MonoBehaviour
 {
     public SongsSO[] songsArray;
-    public TextMeshProUGUI[] menuItemTemplate;
+    public TextMeshProUGUI menuItemTemplate;
     private CircularDoublyLinkedList<SongsSO> songsList = new CircularDoublyLinkedList<SongsSO>();
-    private CircularDoublyLinkedList<TextMeshProUGUI[]> menuItemsList = new CircularDoublyLinkedList<TextMeshProUGUI[]>();
+    private CircularDoublyLinkedList<TextMeshProUGUI> menuItemsList = new CircularDoublyLinkedList<TextMeshProUGUI>();
     public int centerIndex = 3;
     public float spacing = 30f;
     public float horizontalPos = -170f;
@@ -26,9 +26,7 @@ public class CircularMenu : MonoBehaviour
 
     private SongsSO[] originalOrder;
 
-    // Añade variables públicas para los efectos de sonido
     public AudioClip moveSoundEffect;
-    public AudioClip playSoundEffect; // Nuevo efecto de sonido
     private AudioSource audioSource;
 
     void Start()
@@ -44,14 +42,9 @@ public class CircularMenu : MonoBehaviour
         }
         for (int i = 0; i < songsArray.Length; i++)
         {
-            TextMeshProUGUI[] menuItems = new TextMeshProUGUI[menuItemTemplate.Length];
-            for (int j = 0; j < menuItemTemplate.Length; j++)
-            {
-                TextMeshProUGUI menuItem = Instantiate(menuItemTemplate[j], menuItemTemplate[j].transform.parent);
-                menuItem.gameObject.SetActive(true);
-                menuItems[j] = menuItem;
-            }
-            menuItemsList.Add(menuItems);
+            TextMeshProUGUI menuItem = Instantiate(menuItemTemplate, menuItemTemplate.transform.parent);
+            menuItem.gameObject.SetActive(true);
+            menuItemsList.Add(menuItem);
         }
 
         UpdateMenu();
@@ -99,46 +92,32 @@ public class CircularMenu : MonoBehaviour
             if (i < songsList.Count)
             {
                 SongsSO currentSong = songsList.Get(i);
+                TextMeshProUGUI menuItem = menuItemsList.Get(i);
                 bool isCenterIndex = (i == centerIndex);
 
-                for (int j = 0; j < menuItemsList.Get(i).Length; j++)
-                {
-                    menuItemsList.Get(i)[j].text = currentSong.musicTitle;
-                    menuItemsList.Get(i)[j].color = isCenterIndex ? blinkColor1 : blinkColor2;
+                menuItem.text = currentSong.musicTitle;
+                menuItem.color = isCenterIndex ? blinkColor1 : blinkColor2;
 
-                    RectTransform rectTransform = menuItemsList.Get(i)[j].GetComponent<RectTransform>();
-                    rectTransform.anchoredPosition = new Vector2(horizontalPos, (centerIndex - i) * spacing);
-                }
+                RectTransform rectTransform = menuItem.GetComponent<RectTransform>();
+                rectTransform.anchoredPosition = new Vector2(horizontalPos, (centerIndex - i) * spacing);
 
                 if (isCenterIndex)
                 {
                     selectedSong = currentSong;
-                    blinkCoroutine = StartCoroutine(Blink(menuItemsList.Get(i)));
+                    blinkCoroutine = StartCoroutine(Blink(menuItem));
                     songDetailsDisplay.UpdateSongDetails(currentSong);
                     scoreDisplay.UpdateScores(currentSong.top5Scores);
-                }
-            }
-            else
-            {
-                for (int j = 0; j < menuItemsList.Get(i).Length; j++)
-                {
-                    RectTransform rectTransform = menuItemsList.Get(i)[j].GetComponent<RectTransform>();
-                    rectTransform.anchoredPosition = new Vector2(horizontalPos, (centerIndex - i) * spacing);
                 }
             }
         }
     }
 
-
-    IEnumerator Blink(TextMeshProUGUI[] menuItems)
+    IEnumerator Blink(TextMeshProUGUI menuItem)
     {
         bool toggle = false;
         while (true)
         {
-            for (int i = 0; i < menuItems.Length; i++)
-            {
-                menuItems[i].color = toggle ? blinkColor1 : blinkColor2;
-            }
+            menuItem.color = toggle ? blinkColor1 : blinkColor2;
             toggle = !toggle;
             yield return new WaitForSeconds(blinkInterval);
         }
@@ -148,14 +127,13 @@ public class CircularMenu : MonoBehaviour
     {
         if (selectedSong != null)
         {
-            PlayPlaySound();
 
             GameData.AudioClip = selectedSong.audioClip;
             GameData.MidiFileName = selectedSong.midiNameFile;
             GameData.songName = selectedSong.musicTitle;
             GameData.topScores = selectedSong.top5Scores;
             GameData.currentSongData = selectedSong;
-            SceneManager.LoadScene("GameMusic");
+            SceneTransitionController.Instance.FadeToScene("GameMusic");
         }
     }
 
@@ -196,11 +174,5 @@ public class CircularMenu : MonoBehaviour
         }
     }
 
-    private void PlayPlaySound()
-    {
-        if (audioSource != null && playSoundEffect != null)
-        {
-            audioSource.PlayOneShot(playSoundEffect);
-        }
-    }
+    
 }

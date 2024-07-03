@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MusicBG : MonoBehaviour
 {
     private static MusicBG instance;
+    public string sceneName;
 
     private void Awake()
     {
@@ -25,14 +26,19 @@ public class MusicBG : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        if (currentSceneIndex > 1)
+        if (currentSceneIndex != 1 && currentSceneIndex != 2 && currentSceneIndex != 4)
         {
             Destroy(gameObject);
         }
+
     }
 
     public void LoadMusicSelectorScene()
     {
-        SceneManager.LoadScene("MusicSelector");
+        SceneTransitionController.Instance.FadeToScene(sceneName);
+    }
+    public void OnApplicationQuit()
+    {
+        Application.Quit();
     }
 }

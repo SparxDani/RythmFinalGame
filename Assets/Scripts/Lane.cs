@@ -49,12 +49,12 @@ public class Lane : MonoBehaviour
                 notes.Enqueue(noteComponent);
                 spawnIndex++;
             }
-        }
+        }// O(1)
 
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex];
-            double marginOfError = SongManager.Instance.marginOfError;
+            float marginOfError = SongManager.Instance.marginOfError;
             double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayMiliseconds / 1000.0);
 
             if (Input.GetKeyDown(input))
@@ -90,7 +90,7 @@ public class Lane : MonoBehaviour
                     Destroy(noteToDestroy.gameObject);
                 }
                 inputIndex++;
-            }
+            }//O(1) TIEMPO CONSTANTE
         }
     }
 

@@ -12,7 +12,7 @@ public class SongManager : MonoBehaviour
     public AudioSource audioSource;
     public float songDelayInSeconds;
     public int inputDelayMiliseconds;
-    public double marginOfError;
+    public float marginOfError;
     public Lane[] lanes;
 
     public string fileLocation;

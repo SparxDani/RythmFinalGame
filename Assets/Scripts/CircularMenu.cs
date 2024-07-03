@@ -109,7 +109,8 @@ public class CircularMenu : MonoBehaviour
                     scoreDisplay.UpdateScores(currentSong.top5Scores);
                 }
             }
-        }
+        }//O(1) se ejecuta n veces y tiempo constante
+
     }
 
     IEnumerator Blink(TextMeshProUGUI menuItem)

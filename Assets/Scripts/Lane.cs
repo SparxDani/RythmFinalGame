@@ -49,7 +49,7 @@ public class Lane : MonoBehaviour
                 notes.Enqueue(noteComponent);
                 spawnIndex++;
             }
-        }
+        }// O(1)
 
         if (inputIndex < timeStamps.Count)
         {
@@ -90,7 +90,7 @@ public class Lane : MonoBehaviour
                     Destroy(noteToDestroy.gameObject);
                 }
                 inputIndex++;
-            }
+            }//O(1) TIEMPO CONSTANTE
         }
     }
 

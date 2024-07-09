@@ -54,7 +54,7 @@ public class Lane : MonoBehaviour
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex];
-            double marginOfError = SongManager.Instance.marginOfError;
+            float marginOfError = SongManager.Instance.marginOfError;
             double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayMiliseconds / 1000.0);
 
             if (Input.GetKeyDown(input))

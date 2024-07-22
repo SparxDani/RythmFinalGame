@@ -9,7 +9,7 @@ public class Lane : MonoBehaviour
     public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
     public KeyCode input;
     public GameObject notePrefab;
-    CustomQueue<Note> notes = new CustomQueue<Note>();
+    Queue<Note> notes = new Queue<Note>();
     public List<double> timeStamps = new List<double>();
 
     int spawnIndex = 0;

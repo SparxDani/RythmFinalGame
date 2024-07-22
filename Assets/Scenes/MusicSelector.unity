@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharedProfile: {fileID: 11400000, guid: 5710f8b7ac693784eb339d2df53d2919, type: 2}
-  isGlobal: 1
+  isGlobal: 0
   blendDistance: 0
   weight: 1
   priority: 0
@@ -1098,8 +1098,8 @@ MonoBehaviour:
       colorBlindnessType: 0
       colorBlindnessStrength: 1
   m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
+  m_ShowToolkit: 1
+  m_ShowCustomSorter: 1
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
@@ -3792,12 +3792,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6603f71b081feda46b98bdc485aea559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  songsArray:
+  songsList:
+  - {fileID: 11400000, guid: 8f06828465344e144963121ba991eea4, type: 2}
   - {fileID: 11400000, guid: 0f8f3ed4e7c31584198780209eb6cad5, type: 2}
   - {fileID: 11400000, guid: 5b010d162b4e39044bd95a630ba3d1c3, type: 2}
   - {fileID: 11400000, guid: 3f1c348944ed42f4680f2bd9f3029d54, type: 2}
+  - {fileID: 11400000, guid: d5563a219f2104c478c7e75da28c72fd, type: 2}
   menuItemTemplate: {fileID: 1277823292}
-  centerIndex: 1
+  centerIndex: 2
   spacing: 120
   horizontalPos: -80
   blinkColor1: {r: 1, g: 0, b: 0.29612732, a: 1}

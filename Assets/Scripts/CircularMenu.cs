@@ -6,10 +6,9 @@ using TMPro;
 
 public class CircularMenu : MonoBehaviour
 {
-    public SongsSO[] songsArray;
+    public List<SongsSO> songsList = new List<SongsSO>();
     public TextMeshProUGUI menuItemTemplate;
-    private CircularDoublyLinkedList<SongsSO> songsList = new CircularDoublyLinkedList<SongsSO>();
-    private CircularDoublyLinkedList<TextMeshProUGUI> menuItemsList = new CircularDoublyLinkedList<TextMeshProUGUI>();
+    private List<TextMeshProUGUI> menuItemsList = new List<TextMeshProUGUI>();
     public int centerIndex = 3;
     public float spacing = 30f;
     public float horizontalPos = -170f;
@@ -24,7 +23,7 @@ public class CircularMenu : MonoBehaviour
 
     private SongsSO selectedSong;
 
-    private SongsSO[] originalOrder;
+    private List<SongsSO> originalOrder = new List<SongsSO>();
 
     public AudioClip moveSoundEffect;
     private AudioSource audioSource;
@@ -34,13 +33,9 @@ public class CircularMenu : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = moveSoundEffect;
 
-        originalOrder = new SongsSO[songsArray.Length];
-        for (int i = 0; i < songsArray.Length; i++)
-        {
-            songsList.Add(songsArray[i]);
-            originalOrder[i] = songsArray[i];
-        }
-        for (int i = 0; i < songsArray.Length; i++)
+        originalOrder.AddRange(songsList);
+
+        for (int i = 0; i < songsList.Count; i++)
         {
             TextMeshProUGUI menuItem = Instantiate(menuItemTemplate, menuItemTemplate.transform.parent);
             menuItem.gameObject.SetActive(true);
@@ -64,7 +59,7 @@ public class CircularMenu : MonoBehaviour
 
     void MoveUp()
     {
-        SongsSO lastSong = songsList.Get(songsList.Count - 1);
+        SongsSO lastSong = songsList[songsList.Count - 1];
         songsList.RemoveAt(songsList.Count - 1);
         songsList.Insert(0, lastSong);
         UpdateMenu();
@@ -73,7 +68,7 @@ public class CircularMenu : MonoBehaviour
 
     void MoveDown()
     {
-        SongsSO firstSong = songsList.Get(0);
+        SongsSO firstSong = songsList[0];
         songsList.RemoveAt(0);
         songsList.Add(firstSong);
         UpdateMenu();
@@ -91,8 +86,8 @@ public class CircularMenu : MonoBehaviour
         {
             if (i < songsList.Count)
             {
-                SongsSO currentSong = songsList.Get(i);
-                TextMeshProUGUI menuItem = menuItemsList.Get(i);
+                SongsSO currentSong = songsList[i];
+                TextMeshProUGUI menuItem = menuItemsList[i];
                 bool isCenterIndex = (i == centerIndex);
 
                 menuItem.text = currentSong.musicTitle;
@@ -109,8 +104,7 @@ public class CircularMenu : MonoBehaviour
                     scoreDisplay.UpdateScores(currentSong.top5Scores);
                 }
             }
-        }//O(1) se ejecuta n veces y tiempo constante
-
+        }
     }
 
     IEnumerator Blink(TextMeshProUGUI menuItem)
@@ -128,7 +122,6 @@ public class CircularMenu : MonoBehaviour
     {
         if (selectedSong != null)
         {
-
             GameData.AudioClip = selectedSong.audioClip;
             GameData.MidiFileName = selectedSong.midiNameFile;
             GameData.songName = selectedSong.musicTitle;
@@ -142,15 +135,15 @@ public class CircularMenu : MonoBehaviour
     {
         for (int i = 1; i < songsList.Count; i++)
         {
-            SongsSO key = songsList.Get(i);
+            SongsSO key = songsList[i];
             int j = i - 1;
 
-            while (j >= 0 && songsList.Get(j).musicDurationInSeconds > key.musicDurationInSeconds)
+            while (j >= 0 && songsList[j].musicDurationInSeconds > key.musicDurationInSeconds)
             {
-                songsList.Set(j + 1, songsList.Get(j));
+                songsList[j + 1] = songsList[j];
                 j--;
             }
-            songsList.Set(j + 1, key);
+            songsList[j + 1] = key;
         }
 
         UpdateMenu();
@@ -158,11 +151,8 @@ public class CircularMenu : MonoBehaviour
 
     public void RestoreOriginalOrder()
     {
-        songsList = new CircularDoublyLinkedList<SongsSO>();
-        for (int i = 0; i < originalOrder.Length; i++)
-        {
-            songsList.Add(originalOrder[i]);
-        }
+        songsList.Clear();
+        songsList.AddRange(originalOrder);
 
         UpdateMenu();
     }
@@ -174,6 +164,4 @@ public class CircularMenu : MonoBehaviour
             audioSource.PlayOneShot(moveSoundEffect);
         }
     }
-
-    
 }
